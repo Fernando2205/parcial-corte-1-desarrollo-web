@@ -303,11 +303,13 @@ export default function Todo({ user }) {
                 </ul>
             </div>
 
-            <div className="todo__footer">
-                <button onClick={() => ClearCompleted()} className="todo__clear-button">
-                    <Icon name="broom" /> Borrar Tareas Completadas
-                </button>
-            </div>
+            {isAdmin && (
+                <div className="todo__footer">
+                    <button onClick={() => ClearCompleted()} className="todo__clear-button">
+                        <Icon name="broom" /> Borrar Tareas Completadas
+                    </button>
+                </div>
+            )}
         </div>
     );
 }
