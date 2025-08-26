@@ -147,6 +147,30 @@
   padding: var(--spacing-lg);
   overflow-y: auto;
   background: var(--card-bg);
+  max-height: 300px;
+  min-height: 200px;
+  /* Estilos del scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* Webkit scrollbar styles */
+.todo__list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todo__list-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.todo__list-container::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius);
+  transition: background 0.2s ease;
+}
+
+.todo__list-container::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }
 
 .todo__list {
@@ -331,6 +355,11 @@
     font-size: 0.8rem;
   }
 
+  .todo__list-container {
+    max-height: 300px;
+    min-height: 150px;
+  }
+
   .todo__item {
     padding: var(--spacing-sm);
     flex-wrap: wrap;
@@ -366,5 +395,10 @@
   .todo__filter-button {
     flex: 1;
     min-width: 0;
+  }
+
+  .todo__list-container {
+    max-height: 250px;
+    min-height: 120px;
   }
 }
