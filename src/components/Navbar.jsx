@@ -1,6 +1,6 @@
-import "./css/navbar.css";
+import './css/navbar.css'
 
-export default function Navbar({ user, onLogout, theme, onToggleTheme, navigateTo }) {
+export default function Navbar ({ user, onLogout, theme, onToggleTheme, navigateTo }) {
   return (
     <nav className="navbar">
       <div className="navbar__logo">MiLogo</div>
@@ -11,7 +11,7 @@ export default function Navbar({ user, onLogout, theme, onToggleTheme, navigateT
       <div className="navbar__user-section">
         {/*Tema*/}
         <button className="navbar__theme-button" onClick={onToggleTheme} aria-label="Cambiar Tema">
-          {theme === "light" ? "🌙" : "☀️"}
+          {theme === 'light' ? '🌙' : '☀️'}
         </button>
 
         {user?.usuario ? (
@@ -27,5 +27,5 @@ export default function Navbar({ user, onLogout, theme, onToggleTheme, navigateT
         ) : null}
       </div>
     </nav>
-  );
+  )
 }

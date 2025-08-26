@@ -1,19 +1,19 @@
-import { useMemo } from "react";
-import Icon from "./Icon";
-import "./css/dashboard.css";
+import { useMemo } from 'react'
+import Icon from './Icon'
+import './css/dashboard.css'
 
-export default function Dashboard({ user }) {
+export default function Dashboard ({ user }) {
   // Función para obtener saludo dinámico según la hora
   const getSaludo = () => {
-    const hora = new Date().getHours();
+    const hora = new Date().getHours()
     if (hora >= 5 && hora < 12) {
-      return "Buenos días";
+      return 'Buenos días'
     } else if (hora >= 12 && hora < 18) {
-      return "Buenas tardes";
+      return 'Buenas tardes'
     } else {
-      return "Buenas noches";
+      return 'Buenas noches'
     }
-  };
+  }
 
   // Función para obtener todas las tareas de todos los usuarios (solo para admin)
   const getEstadisticasGlobales = useMemo(() => {
@@ -21,50 +21,50 @@ export default function Dashboard({ user }) {
       totalTareas: 0,
       tareasPendientes: 0,
       tareasCompletadas: 0,
-      totalUsuarios: 0,
-    };
+      totalUsuarios: 0
+    }
 
     // Recorrer localStorage para encontrar claves que empiecen por 'todos_'
     for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
+      const key = localStorage.key(i)
 
       if (key && key.startsWith('todos_')) {
-        const tareas = JSON.parse(localStorage.getItem(key) || "[]");
-        estadisticas.totalTareas += tareas.length;
-        estadisticas.tareasPendientes += tareas.filter(t => !t.done).length;
-        estadisticas.tareasCompletadas += tareas.filter(t => t.done).length;
+        const tareas = JSON.parse(localStorage.getItem(key) || '[]')
+        estadisticas.totalTareas += tareas.length
+        estadisticas.tareasPendientes += tareas.filter(t => !t.done).length
+        estadisticas.tareasCompletadas += tareas.filter(t => t.done).length
       }
 
     }
 
     // Contar usuarios registrados
-    const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
-    estadisticas.totalUsuarios = usuarios.length;
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]')
+    estadisticas.totalUsuarios = usuarios.length
 
-    return estadisticas;
-  }, []);
+    return estadisticas
+  }, [])
 
   // Función para obtener estadísticas personales del usuario
   const getEstadisticasPersonales = useMemo(() => {
-    const storageKey = `todos_${user?.usuario || "anon"}`;
-    const tareas = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    const storageKey = `todos_${user?.usuario || 'anon'}`
+    const tareas = JSON.parse(localStorage.getItem(storageKey) || '[]')
 
     return {
       totalTareas: tareas.length,
       tareasPendientes: tareas.filter(t => !t.done).length,
       tareasCompletadas: tareas.filter(t => t.done).length,
       porcentajeCompletado: tareas.length > 0 ? Math.round((tareas.filter(t => t.done).length / tareas.length) * 100) : 0
-    };
-  }, [user]);
+    }
+  }, [user])
 
-  const esAdmin = user?.rol === "admin";
-  const estadisticas = esAdmin ? getEstadisticasGlobales : getEstadisticasPersonales;
+  const esAdmin = user?.rol === 'admin'
+  const estadisticas = esAdmin ? getEstadisticasGlobales : getEstadisticasPersonales
 
   return (
     <div className="dashboard">
       {/* Saludo dinámico */}
       <h1 className="dashboard__greeting">
-        {getSaludo()}, {user?.usuario || "Usuario"}!
+        {getSaludo()}, {user?.usuario || 'Usuario'}!
       </h1>
 
       {esAdmin ? (
@@ -129,7 +129,7 @@ export default function Dashboard({ user }) {
               </li>
               <li className="dashboard__summary-item">
                 <Icon name="chart-bar" />
-                <strong>Actividad:</strong> {estadisticas.tareasPendientes == 1 ? "1 tarea requiere atención" : `${estadisticas.tareasPendientes} tareas requieren atención`}
+                <strong>Actividad:</strong> {estadisticas.tareasPendientes == 1 ? '1 tarea requiere atención' : `${estadisticas.tareasPendientes} tareas requieren atención`}
               </li>
               <li className="dashboard__summary-item">
                 <Icon name="crown" />
@@ -195,7 +195,7 @@ export default function Dashboard({ user }) {
             </h3>
             <div className="dashboard__progress">
               <div className="dashboard__progress-bar">
-                <div 
+                <div
                   className="dashboard__progress-fill"
                   style={{ width: `${estadisticas.porcentajeCompletado}%` }}
                 ></div>
@@ -207,11 +207,11 @@ export default function Dashboard({ user }) {
             <ul className="dashboard__summary-list">
               <li className="dashboard__summary-item">
                 <Icon name="bullseye" />
-                <strong>Estado:</strong> {estadisticas.tareasPendientes === 0 ? "¡Todas las tareas completadas!" : `${estadisticas.tareasPendientes} tareas por hacer`}
+                <strong>Estado:</strong> {estadisticas.tareasPendientes === 0 ? '¡Todas las tareas completadas!' : `${estadisticas.tareasPendientes} tareas por hacer`}
               </li>
               <li className="dashboard__summary-item">
                 <Icon name="chart-bar" />
-                <strong>Productividad:</strong> {estadisticas.totalTareas === 0 ? "¡Comienza agregando tu primera tarea!" : `Has completado ${estadisticas.tareasCompletadas} de ${estadisticas.totalTareas} tareas`}
+                <strong>Productividad:</strong> {estadisticas.totalTareas === 0 ? '¡Comienza agregando tu primera tarea!' : `Has completado ${estadisticas.tareasCompletadas} de ${estadisticas.totalTareas} tareas`}
               </li>
               <li className="dashboard__summary-item">
                 <Icon name="user" />
@@ -222,5 +222,5 @@ export default function Dashboard({ user }) {
         </div>
       )}
     </div>
-  );
+  )
 }
