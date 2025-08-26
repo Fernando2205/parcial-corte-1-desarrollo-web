@@ -1,0 +1,370 @@
+/* Todo Component Styles */
+.todo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.todo__header {
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+}
+
+.todo__title {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Selector de usuario para admin */
+.todo__user-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  backdrop-filter: blur(5px);
+}
+
+.todo__user-label {
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.todo__user-select {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--fg);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 150px;
+}
+
+.todo__user-select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Formulario para agregar tareas */
+.todo__add-form {
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+.todo__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.todo__input {
+  flex: 1;
+  min-height: 44px;
+  font-size: 1rem;
+}
+
+.todo__add-button {
+  background: var(--success);
+  color: white;
+  border: none;
+  font-weight: 600;
+  min-height: 44px;
+}
+
+.todo__add-button:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+
+/* Filtros */
+.todo__filters {
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--card-bg);
+  flex-wrap: wrap;
+}
+
+.todo__filter-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 40px;
+  font-size: 0.875rem;
+}
+
+.todo__filter-button:hover {
+  border-color: white;
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.todo__filter-button--active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.todo__filter-button--active:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Lista de tareas */
+.todo__list-container {
+  flex: 1;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  background: var(--card-bg);
+}
+
+.todo__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.todo__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.todo__item:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+
+.todo__checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--success);
+}
+
+.todo__text {
+  flex: 1;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.4;
+  word-break: break-word;
+  transition: all 0.2s ease;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+}
+
+.todo__text:hover {
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.todo__text--completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+  color: var(--muted);
+}
+
+/* Edición de tareas */
+.todo__edit-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.todo__edit-input {
+  flex: 1;
+  border: 2px solid var(--primary);
+  background: white;
+  font-size: 1rem;
+  min-height: 36px;
+}
+
+.todo__edit-input:focus {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Botones de acción */
+.todo__action-button {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 32px;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo__edit-button {
+  background: var(--primary);
+  color: white;
+}
+
+.todo__edit-button:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+.todo__save-button {
+  background: var(--success);
+  color: white;
+}
+
+.todo__save-button:hover {
+  background: #218838;
+  transform: scale(1.05);
+}
+
+.todo__cancel-button {
+  background: var(--danger);
+  color: white;
+}
+
+.todo__cancel-button:hover {
+  background: #c82333;
+  transform: scale(1.05);
+}
+
+.todo__delete-button {
+  background: var(--danger);
+  color: white;
+  opacity: 0.8;
+}
+
+.todo__delete-button:hover:not(:disabled) {
+  background: #c82333;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.todo__delete-button:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Estados vacíos */
+.todo__empty-state {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.todo__empty-state i {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.5;
+}
+
+/* Footer de acciones */
+.todo__footer {
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+.todo__clear-button {
+  background: var(--warning);
+  color: white;
+  border: none;
+  font-weight: 600;
+  width: 100%;
+}
+
+.todo__clear-button:hover {
+  background: #e0a800;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .todo__filters {
+    padding: var(--spacing-sm);
+  }
+
+  .todo__filter-button {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.8rem;
+  }
+
+  .todo__item {
+    padding: var(--spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .todo__edit-container {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .todo__action-button {
+    min-width: 28px;
+    min-height: 28px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .todo {
+    margin: var(--spacing-sm);
+    border-radius: var(--radius);
+  }
+
+  .todo__form {
+    gap: var(--spacing-xs);
+  }
+
+  .todo__filters {
+    justify-content: stretch;
+  }
+
+  .todo__filter-button {
+    flex: 1;
+    min-width: 0;
+  }
+}

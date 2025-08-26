@@ -1,0 +1,236 @@
+/* Dashboard Styles */
+.dashboard {
+  padding: var(--spacing-xl);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.dashboard__header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.dashboard__title {
+  color: #007acc;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.dashboard__title i {
+  font-size: 1.5rem;
+}
+
+.dashboard__greeting {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-xl);
+  color: var(--fg);
+  text-align: center;
+}
+
+/* Grid de métricas */
+.dashboard__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard__metric-card {
+  background: var(--card-bg, #f8f9fa);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #dee2e6);
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.dashboard__metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.dashboard__metric-title {
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.dashboard__metric-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Colores específicos por métrica */
+.dashboard__metric-card--success .dashboard__metric-title,
+.dashboard__metric-card--success .dashboard__metric-value {
+  color: #28a745;
+}
+
+.dashboard__metric-card--warning .dashboard__metric-title,
+.dashboard__metric-card--warning .dashboard__metric-value {
+  color: #ffc107;
+}
+
+.dashboard__metric-card--info .dashboard__metric-title,
+.dashboard__metric-card--info .dashboard__metric-value {
+  color: #17a2b8;
+}
+
+.dashboard__metric-card--primary .dashboard__metric-title,
+.dashboard__metric-card--primary .dashboard__metric-value {
+  color: #007acc;
+}
+
+.dashboard__metric-card--secondary .dashboard__metric-title,
+.dashboard__metric-card--secondary .dashboard__metric-value {
+  color: #6f42c1;
+}
+
+.dashboard__metric-card--danger .dashboard__metric-title,
+.dashboard__metric-card--danger .dashboard__metric-value {
+  color: var(--danger);
+}
+
+/* Sección de resumen */
+.dashboard__summary {
+  background: var(--card-bg, #f8f9fa);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #dee2e6);
+  box-shadow: var(--shadow);
+  margin-top: 1rem;
+}
+
+.dashboard__summary-title {
+  margin: 0 0 1rem 0;
+  color: #007acc;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.dashboard__summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard__summary-item {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.dashboard__summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.dashboard__summary-item i {
+  color: #28a745;
+}
+
+.dashboard__summary-item:nth-child(2) i {
+  color: #ffc107;
+}
+
+.dashboard__summary-item:nth-child(3) i {
+  color: #6f42c1;
+}
+
+/* Para iconos específicos en el dashboard de usuario */
+.dashboard__summary-item i.fa-bullseye {
+  color: #28a745;
+}
+
+.dashboard__summary-item i.fa-chart-bar {
+  color: #17a2b8;
+}
+
+.dashboard__summary-item i.fa-user {
+  color: #6f42c1;
+}
+
+/* Barra de progreso */
+.dashboard__progress {
+  margin-bottom: 1rem;
+}
+
+.dashboard__progress-bar {
+  width: 100%;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.dashboard__progress-fill {
+  background: #28a745;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard__progress-text {
+  text-align: center;
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: var(--spacing-md);
+  }
+
+  .dashboard__greeting {
+    font-size: 2rem;
+  }
+
+  .dashboard__title {
+    font-size: 1.5rem;
+  }
+
+  .dashboard__metrics {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .dashboard__metric-value {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard__greeting {
+    font-size: 1.75rem;
+  }
+
+  .dashboard__metric-value {
+    font-size: 2rem;
+  }
+
+  .dashboard__metric-card {
+    padding: var(--spacing-md);
+  }
+}
