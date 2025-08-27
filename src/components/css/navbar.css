@@ -51,10 +51,6 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-.navbar__menu-item:active {
-  transform: translateY(0);
-}
-
 .navbar__user-section {
   display: flex;
   align-items: center;
@@ -202,15 +198,7 @@
   }
 }
 
-/* Estados de navegación activa */
-.navbar__menu-item--active {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
 /* Modo oscuro específico */
 :root[data-theme="dark"] .navbar {
   background: linear-gradient(135deg, #1e293b, #334155);
-  border-bottom-color: rgba(255, 255, 255, 0.05);
 }

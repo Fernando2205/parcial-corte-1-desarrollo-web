@@ -93,10 +93,6 @@
   box-shadow: var(--shadow-md);
 }
 
-.login__submit-button:active {
-  transform: translateY(0);
-}
-
 .login__toggle-button {
   background: transparent;
   color: var(--primary);
@@ -116,7 +112,8 @@
 .login__toggle-button:hover {
   background: var(--primary);
   color: white;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  border: none;
 }
 
 .login__message {
@@ -179,39 +176,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Estado de carga */
-.login__submit-button:disabled {
-  background: var(--muted);
-  cursor: not-allowed;
-  transform: none;
-}
-
-.login__submit-button--loading {
-  position: relative;
-  color: transparent;
-}
-
-.login__submit-button--loading::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  margin-left: -8px;
-  margin-top: -8px;
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-  border-top-color: transparent;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
   }
 }
 

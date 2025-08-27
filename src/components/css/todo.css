@@ -122,7 +122,7 @@
   font-size: 0.875rem;
 }
 
-.todo__filter-button:hover {
+.todo__filter-button:hover:not(.todo__filter-button--active) {
   border-color: white;
   background-color: var(--primary);
   color: white;
@@ -136,11 +136,11 @@
 }
 
 .todo__filter-button--active:hover {
+  cursor: default;
+  transform: none;
+  border-color: var(--primary);
   background: var(--primary);
-  color: white;
-  transform: translateY(-1px);
 }
-
 /* Lista de tareas */
 .todo__list-container {
   flex: 1;
@@ -157,16 +157,6 @@
 /* Webkit scrollbar styles */
 .todo__list-container::-webkit-scrollbar {
   width: 8px;
-}
-
-.todo__list-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.todo__list-container::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: var(--radius);
-  transition: background 0.2s ease;
 }
 
 .todo__list-container::-webkit-scrollbar-thumb:hover {
@@ -215,10 +205,6 @@
   transition: all 0.2s ease;
   padding: var(--spacing-xs);
   border-radius: var(--radius-sm);
-}
-
-.todo__text:hover {
-  background: rgba(79, 70, 229, 0.05);
 }
 
 .todo__text--completed {
@@ -401,4 +387,34 @@
     max-height: 250px;
     min-height: 120px;
   }
+}
+
+/* Modo oscuro específico para selector de usuario */
+:root[data-theme="dark"] .todo__user-selector {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .todo__user-select {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+:root[data-theme="dark"] .todo__user-select:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Scrollbar específica para modo oscuro */
+:root[data-theme="dark"] .todo__list-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+:root[data-theme="dark"] .todo__list-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+:root[data-theme="dark"] .todo__list-container {
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }

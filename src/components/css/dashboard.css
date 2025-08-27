@@ -142,15 +142,7 @@
   margin-bottom: 0;
 }
 
-.dashboard__summary-item i {
-  color: #28a745;
-}
-
-.dashboard__summary-item:nth-child(2) i {
-  color: #ffc107;
-}
-
-.dashboard__summary-item:nth-child(3) i {
+.dashboard__summary-item i.fa-crown {
   color: #6f42c1;
 }
 
@@ -233,4 +225,34 @@
   .dashboard__metric-card {
     padding: var(--spacing-md);
   }
+}
+
+/* Modo oscuro específico */
+:root[data-theme="dark"] .dashboard__metric-card {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+:root[data-theme="dark"] .dashboard__summary {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+/* En modo oscuro, ajustar colores para mejor contraste */
+:root[data-theme="dark"]
+  .dashboard__metric-card--warning
+  .dashboard__metric-title,
+:root[data-theme="dark"]
+  .dashboard__metric-card--warning
+  .dashboard__metric-value {
+  color: #ffd43b;
+}
+
+/* Barra de progreso en modo oscuro */
+:root[data-theme="dark"] .dashboard__progress-bar {
+  background-color: #374151;
+}
+
+:root[data-theme="dark"] .dashboard__progress-fill {
+  background: #10b981;
 }
